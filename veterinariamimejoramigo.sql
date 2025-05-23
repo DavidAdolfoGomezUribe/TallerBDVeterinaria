@@ -234,6 +234,8 @@ INSERT INTO mascotas (nombredelamascota, especie, raza, fechadenacimiento, sexo,
 
 
 INSERT INTO registrodevisitas (fechadeadmision, id_mascota, id_servicios) VALUES
+('2023-11-10 14:45:00', 1, 1),
+('2023-11-10 14:45:00', 2, 4),
 ('2023-11-10 14:45:00', 3, 12),
 ('2025-01-05 11:20:00', 4, 1),
 ('2022-07-08 08:50:00', 5, 9),
@@ -294,7 +296,7 @@ INSERT INTO registrodevisitas (fechadeadmision, id_mascota, id_servicios) VALUES
 ('2024-08-20 10:45:00', 60, 19),
 ('2021-02-28 11:50:00', 61, 4),
 ('2023-04-14 14:30:00', 62, 18),
-('2022-09-07 13:35:00', 63, 7)
+('2022-09-07 13:35:00', 63, 7);
 
 -- ahora añadiremos 20 tratamientos 
 
@@ -304,76 +306,66 @@ INSERT INTO tratamientos (nombredeltratamiento, observaciones, id_registrodevisi
 ('Tratamiento A', 'Observación para Tratamiento A - sesión 3', 3),
 ('Tratamiento A', 'Observación para Tratamiento A - sesión 4', 4),
 ('Tratamiento A', 'Observación para Tratamiento A - sesión 5', 5),
-
 ('Tratamiento B', 'Observación para Tratamiento B - sesión 1', 6),
 ('Tratamiento B', 'Observación para Tratamiento B - sesión 2', 7),
 ('Tratamiento B', 'Observación para Tratamiento B - sesión 3', 8),
 ('Tratamiento B', 'Observación para Tratamiento B - sesión 4', 9),
 ('Tratamiento B', 'Observación para Tratamiento B - sesión 5', 10),
-
 ('Tratamiento C', 'Observación para Tratamiento C - sesión 1', 11),
 ('Tratamiento C', 'Observación para Tratamiento C - sesión 2', 12),
 ('Tratamiento C', 'Observación para Tratamiento C - sesión 3', 13),
 ('Tratamiento C', 'Observación para Tratamiento C - sesión 4', 14),
 ('Tratamiento C', 'Observación para Tratamiento C - sesión 5', 15),
-
 ('Tratamiento D', 'Observación para Tratamiento D - sesión 1', 16),
 ('Tratamiento D', 'Observación para Tratamiento D - sesión 2', 17),
 ('Tratamiento D', 'Observación para Tratamiento D - sesión 3', 18),
 ('Tratamiento D', 'Observación para Tratamiento D - sesión 4', 19),
 ('Tratamiento D', 'Observación para Tratamiento D - sesión 5', 20),
-
 ('Tratamiento E', 'Observación para Tratamiento E - sesión 1', 21),
 ('Tratamiento E', 'Observación para Tratamiento E - sesión 2', 22),
 ('Tratamiento E', 'Observación para Tratamiento E - sesión 3', 23),
 ('Tratamiento E', 'Observación para Tratamiento E - sesión 4', 24),
 ('Tratamiento E', 'Observación para Tratamiento E - sesión 5', 25),
-
 ('Tratamiento F', 'Observación para Tratamiento F - sesión 1', 26),
 ('Tratamiento F', 'Observación para Tratamiento F - sesión 2', 27),
 ('Tratamiento F', 'Observación para Tratamiento F - sesión 3', 28),
 ('Tratamiento F', 'Observación para Tratamiento F - sesión 4', 29),
 ('Tratamiento F', 'Observación para Tratamiento F - sesión 5', 30),
-
 ('Tratamiento G', 'Observación para Tratamiento G - sesión 1', 31),
 ('Tratamiento G', 'Observación para Tratamiento G - sesión 2', 32),
 ('Tratamiento G', 'Observación para Tratamiento G - sesión 3', 33),
 ('Tratamiento G', 'Observación para Tratamiento G - sesión 4', 34),
 ('Tratamiento G', 'Observación para Tratamiento G - sesión 5', 35),
-
 ('Tratamiento H', 'Observación para Tratamiento H - sesión 1', 36),
 ('Tratamiento H', 'Observación para Tratamiento H - sesión 2', 37),
 ('Tratamiento H', 'Observación para Tratamiento H - sesión 3', 38),
 ('Tratamiento H', 'Observación para Tratamiento H - sesión 4', 39),
 ('Tratamiento H', 'Observación para Tratamiento H - sesión 5', 40),
-
 ('Tratamiento I', 'Observación para Tratamiento I - sesión 1', 41),
 ('Tratamiento I', 'Observación para Tratamiento I - sesión 2', 42),
 ('Tratamiento I', 'Observación para Tratamiento I - sesión 3', 43),
 ('Tratamiento I', 'Observación para Tratamiento I - sesión 4', 44),
 ('Tratamiento I', 'Observación para Tratamiento I - sesión 5', 45),
-
 ('Tratamiento J', 'Observación para Tratamiento J - sesión 1', 46),
 ('Tratamiento J', 'Observación para Tratamiento J - sesión 2', 47),
 ('Tratamiento J', 'Observación para Tratamiento J - sesión 3', 48),
 ('Tratamiento J', 'Observación para Tratamiento J - sesión 4', 49),
 ('Tratamiento J', 'Observación para Tratamiento J - sesión 5', 50),
-
 ('Tratamiento K', 'Observación para Tratamiento K - sesión 1', 51),
 ('Tratamiento K', 'Observación para Tratamiento K - sesión 2', 52),
 ('Tratamiento K', 'Observación para Tratamiento K - sesión 3', 53),
 ('Tratamiento K', 'Observación para Tratamiento K - sesión 4', 54),
 ('Tratamiento K', 'Observación para Tratamiento K - sesión 5', 55),
-
 ('Tratamiento L', 'Observación para Tratamiento L - sesión 1', 56),
 ('Tratamiento L', 'Observación para Tratamiento L - sesión 2', 57),
 ('Tratamiento L', 'Observación para Tratamiento L - sesión 3', 58),
 ('Tratamiento L', 'Observación para Tratamiento L - sesión 4', 59),
 ('Tratamiento L', 'Observación para Tratamiento L - sesión 5', 60),
-
 ('sin tratamiento', 'Observación para Tratamiento M - sesión 1', 61),
 ('sin tratamiento', 'Observación para Tratamiento M - sesión 2', 62),
-('sin tratamiento', 'Observación para Tratamiento M - sesión 3', 63)
+('sin tratamiento', 'Observación para Tratamiento M - sesión 2', 63);
+
+
 
 -- DQL para hacer consultas
 select * from mascotas;
@@ -390,11 +382,56 @@ select * from tratamientos;
 
 -- DQL
 -- Creación de tabla a partir de consulta
+CREATE TABLE mascotas_perro AS
+SELECT * FROM mascotas WHERE especie = 'perro';
+-- consulto la tabla para verificar que no estoy loco
+select * from mascotas_perro;
+
 -- Alias en campos
+
+select nombredelamascota as nombre from mascotas;
+select fechadenacimiento as fecha from mascotas;
+
+
+
+select * from mascotas where sexo = 'macho' and especie in (
+    select especie from mascotas
+    where fechadenacimiento > '2022-12-31' and especie in( select especie from mascotas where especie = 'pollo' )
+  );
+  
 -- Alias en subconsultas
--- Funciones de agregación (COUNT, AVG, MAX, etc.)
--- Alias en funciones de agregación
+-- el aias en subconsultas el solo para "crear" una tabla temporal para que MySQL pueda referenciarse
+select e as a, total from (
+    select especie as e, COUNT(*) as total
+    from mascotas
+    group by especie
+) as conteo_por_especie where total = 9;
+	
+
+
+-- Funciones de agregación (COUNT, AVG, MAX, etc.) -- Alias en funciones de agregación
+
+select count(*) as cantidaddeservicios from servicios;
+
+select sum(precios) as total from servicios;
+
+select avg(precios) as preciomediodelosservicios from servicios;
+
+select nombredelservicio as serviciomascaro, precios from servicios 
+where precios = (select max(precios) from servicios);
+
+select nombredelservicio as serviciomasbarato, precios from servicios 
+where precios = (select min(precios) from servicios);
+
 -- CONCAT
+
+select nombre,concat('+57 ',telefono) as telefonoscondigodepais from dueñosdemascotas;
+
+select nombre , upper(nombre),lower(nombre) from dueñosdemascotas;
+
+
+
+
 -- UPPER, LOWER
 -- LENGTH, SUBSTRING, TRIM
 -- ROUND
