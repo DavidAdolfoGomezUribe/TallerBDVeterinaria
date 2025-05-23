@@ -88,7 +88,7 @@ select * from tratamientos;
 -- -----------------------------------------------------------------------------------------------------
 -- todo lo anteriormente escrito es de manera basica y puntual profundizare mas en la siguiente seccion.
 -- -----------------------------------------------------------------------------------------------------
--- DML
+-- DML para agregar datos 
 -- vamos a insertar 40 dueños de mascotas
 
 INSERT INTO dueñosdemascotas (nombre, telefono, direccion) VALUES
@@ -135,7 +135,8 @@ INSERT INTO dueñosdemascotas (nombre, telefono, direccion) VALUES
 
 
 -- para cada dueño de mascota vamos a meter varias mascotas (63) que estaran relacionadas con los mismos
--- cada dueño puede tener 1 o varias mascotas 
+-- cada dueño puede tener 1 o varias mascotas
+
 
 INSERT INTO mascotas (nombredelamascota, especie, raza, fechadenacimiento, sexo, estadovacunacion, id_dueñosdemascotas) VALUES
 ('Firulais', 'perro', 'Labrador', '2018-06-15', 'macho', 'si', 1),
@@ -205,6 +206,7 @@ INSERT INTO mascotas (nombredelamascota, especie, raza, fechadenacimiento, sexo,
 
  -- ahora vamos a meter los servicios 20 en total
  
+ 
  INSERT INTO servicios (nombredelservicio, precios, descripcion) VALUES
 ('Baño', 20000, 'Baño con jabón antibacterial y shampoo con acondicionador'),
 ('Corte de uñas', 10000, 'Corte higiénico de uñas para evitar infecciones'),
@@ -230,8 +232,6 @@ INSERT INTO mascotas (nombredelamascota, especie, raza, fechadenacimiento, sexo,
 
 
 -- ahora vamos a meter el registro de visitas , si son 100 animales serian 100 registros
-
-
 
 INSERT INTO registrodevisitas (fechadeadmision, id_mascota, id_servicios) VALUES
 ('2023-11-10 14:45:00', 1, 1),
@@ -299,6 +299,8 @@ INSERT INTO registrodevisitas (fechadeadmision, id_mascota, id_servicios) VALUES
 ('2022-09-07 13:35:00', 63, 7);
 
 -- ahora añadiremos 20 tratamientos 
+
+
 
 INSERT INTO tratamientos (nombredeltratamiento, observaciones, id_registrodevisitas) VALUES
 ('Tratamiento A', 'Observación para Tratamiento A - sesión 1', 1),
@@ -382,16 +384,26 @@ select * from tratamientos;
 
 -- DQL
 -- Creación de tabla a partir de consulta
+
 CREATE TABLE mascotas_perro AS
 SELECT * FROM mascotas WHERE especie = 'perro';
+
 -- consulto la tabla para verificar que no estoy loco
-select * from mascotas_perro;
+select * from mascotas_hembra;
+
+CREATE TABLE mascotas_pollo AS
+SELECT * FROM mascotas WHERE especie = 'pollo';
+
+create table mascotas_macho as select * from mascotas where sexo = 'macho';
+create table mascotas_hembra as select * from mascotas where sexo = 'hembra';
+
+
+
 
 -- Alias en campos
 
 select nombredelamascota as nombre from mascotas;
 select fechadenacimiento as fecha from mascotas;
-
 
 
 select * from mascotas where sexo = 'macho' and especie in (
@@ -405,19 +417,24 @@ select e as a, total from (
     select especie as e, COUNT(*) as total
     from mascotas
     group by especie
-) as conteo_por_especie where total = 9;
+) as conteo_por_especie where total = 8 ;
 	
 
 
 -- Funciones de agregación (COUNT, AVG, MAX, etc.) -- Alias en funciones de agregación
 
 select count(*) as cantidaddeservicios from servicios;
+select count(*) as nombre from dueñosdemascotas;
+
 
 select sum(precios) as total from servicios;
+select sum(telefono) from dueñosdemascotas;
 
 select avg(precios) as preciomediodelosservicios from servicios;
+select avg(telefono) from dueñosdemascotas;
 
-select nombredelservicio as serviciomascaro, precios from servicios 
+
+select nombredelservicio as serviciomascaro, precios as monto from servicios 
 where precios = (select max(precios) from servicios);
 
 select nombredelservicio as serviciomasbarato, precios from servicios 
@@ -425,15 +442,99 @@ where precios = (select min(precios) from servicios);
 
 -- CONCAT
 
-select nombre,concat('+57 ',telefono) as telefonoscondigodepais from dueñosdemascotas;
-
-select nombre , upper(nombre),lower(nombre) from dueñosdemascotas;
-
-
-
+select nombre,concat('+57 ',telefono) as paistelefono , telefono as telefonoscondigodepais from dueñosdemascotas;
 
 -- UPPER, LOWER
--- LENGTH, SUBSTRING, TRIM
+
+select nombre , upper(nombre),lower(nombre) from dueñosdemascotas;
+select nombredelamascota ,upper(nombredelamascota) from mascotas;
+
+-- LENGTH
+select nombredelservicio,length(nombredelservicio) from servicios;
+select telefono,length(telefono) from dueñosdemascotas;
+
+-- SUBSTRING
+select nombredelamascota, upper(substring(nombredelamascota,1,3)) from mascotas; 
+
+
+-- TRIM
+INSERT INTO dueñosdemascotas (nombre, telefono, direccion) VALUES
+('      Ara Goez  ', '3182345670', 'Calle 54 #45-21');
+
+select * from dueñosdemascotas;
+
+select trim(nombre) from dueñosdemascotas;
+
 -- ROUND
+
+select round(avg(precios)) as preciomediodelosservicios from servicios;
+select round(avg(telefono),2) from dueñosdemascotas;
 -- IF en campos
 
+select nombredelamascota,
+ if(especie = 'perro', ':) Es un perro', 'X No es un perro') AS resultado
+from mascotas;
+
+select * from servicios;
+select nombredelservicio, if(precios > 20000, ':)' , '):' ) as nuevosprecios from servicios;
+
+-- inner join
+
+select mascotas.nombredelamascota, dueñosdemascotas.nombre
+from mascotas
+inner join dueñosdemascotas
+on mascotas.id_dueñosdemascotas = dueñosdemascotas.id;
+-- llave foranea on mascotas.id_dueñosdemascotas
+-- dueñosdemascotas.id; a donde referencia
+
+-- left join
+select  mascotas.nombredelamascota, 
+  dueñosdemascotas.nombre
+from mascotas
+left join dueñosdemascotas
+on mascotas.id_dueñosdemascotas = dueñosdemascotas.id;
+
+
+
+
+
+-- right join
+select  mascotas.nombredelamascota, 
+  dueñosdemascotas.nombre
+from mascotas
+right join dueñosdemascotas
+on mascotas.id_dueñosdemascotas = dueñosdemascotas.id;
+
+
+-- aqui toco preguntar a san gpt
+-- FULL JOIN simulado con UNION ALL de LEFT JOIN y RIGHT JOIN
+select 
+  mascotas.nombredelamascota, 
+  dueñosdemascotas.nombre
+from mascotas
+left join dueñosdemascotas
+  on mascotas.id_dueñosdemascotas = dueñosdemascotas.id
+
+UNION ALL
+
+select 
+  mascotas.nombredelamascota, 
+  dueñosdemascotas.nombre
+from mascotas
+right join dueñosdemascotas
+  on mascotas.id_dueñosdemascotas = dueñosdemascotas.id
+where mascotas.id_dueñosdemascotas is null;  -- para evitar duplicados de la parte que ya aparece en el left join
+
+-- order by
+
+
+select * from mascotas order by fechadenacimiento desc;
+select * from servicios order by precios desc;
+
+
+
+-- group by
+select especie, COUNT(*) as total_mascotas from mascotas
+group by especie;
+
+select raza, count(*) as total from mascotas group by raza;
